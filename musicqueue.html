@@ -1,0 +1,40 @@
+<head>
+  <title>musicqueue</title>
+</head>
+
+<body>
+    <h1>Teamspeak Music Queue</h1>
+    <h2>Songs in queue</h2>
+    {{> songs}}
+    <h2>Add song to queue</h2>
+    {{> addsong}}
+    {{> player}}
+</body>
+
+<template name="addsong">
+    <form class="add-song">
+        <label for="url">Youtube URL</label>
+        <input type="text" name="url" id="url">
+        <input type="submit" value="Add">
+    </form>
+</template>
+
+<template name="songs">
+    {{#each songs}}
+        <div class="song">
+            <button id="remove" songid={{_id}}>x</button>
+            <span class="title">{{title}}</span>
+        </div>
+    {{/each}}
+</template>
+
+<template name="player">
+    {{#if showPlayer}}
+        <button id="start">Start</button>
+        <button id="skip">Skip</button>
+        <br>
+        <div id="songplayer">
+
+        </div>
+    {{/if}}
+</template>
